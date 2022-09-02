@@ -4,26 +4,36 @@ import Loading from '../pages/Loading';
 
 export default class Header extends Component {
   state = {
-    loading: true,
-    userName: '',
+    loading: false,
+    userName: { },
   };
 
   componentDidMount() {
-    const user = getUser();
-    this.setState({
-      userName: user,
-      loading: false,
-    });
+    this.featUser();
   }
+
+  featUser = async () => {
+    this.setState({
+      loading: true,
+    }, async () => {
+      const user = await getUser();
+      this.setState({
+        loading: false,
+        userName: user,
+      });
+    });
+  };
 
   render() {
     const { userName, loading } = this.state;
     return (
-      <Header data-testid="header-component">
+      <header data-testid="header-component">
 
-        { loading ? <Loading /> : <p data-testid="header-user-name">{ userName }</p> }
+        { loading ? <Loading /> : (
+          <p data-testid="header-user-name">{ userName.name }</p>
+        ) }
 
-      </Header>
+      </header>
     );
   }
 }
