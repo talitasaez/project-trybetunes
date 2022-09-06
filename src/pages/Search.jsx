@@ -79,8 +79,8 @@ export default class Search extends Component {
             { searchArtist }
           </p>
         )}
-        {albuns.length > 0 && albuns.map((album) => (
-          <div key={ album.collectionId }>
+        {albuns.length > 0 && albuns.map((album, index) => (
+          <div key={ index }>
             <p>{ album.artistName }</p>
             <p>{ album.collectionName }</p>
             <img src={ album.artworkUrl100 } alt={ album.artistName } />
