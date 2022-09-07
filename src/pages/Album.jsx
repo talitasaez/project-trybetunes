@@ -33,13 +33,16 @@ export default class Album extends Component {
         <Header />
         <p data-testid="artist-name">{ artist }</p>
         <p data-testid="album-name">{ album }</p>
-        {musics.slice(1).map((music) => (
-          <MusicCard
-            key={ music }
-            trackName={ music.trackName }
-            previewUrl={ music.previewUrl }
-          />
-        ))}
+        {musics.filter((music, index) => index !== 0)
+          .map((music) => (
+            <MusicCard
+              key={ music.collectionId }
+              trackName={ music.trackName }
+              previewUrl={ music.previewUrl }
+              objectMusic={ music }
+              trackId={ music.trackId }
+            />
+          ))}
 
       </div>
     );
