@@ -4,6 +4,7 @@ import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 // import getMusics from '../services/musicsAPI';
 
+// Parte do requisito feito com a ajuda de Filipe Lima .
 export default class MusicCard extends Component {
   state = {
     loading: false,
@@ -70,5 +71,6 @@ MusicCard.propTypes = {
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
-  objectMusic: PropTypes.object.isRequired,
+  objectMusic: PropTypes.shape({
+  }).isRequired,
 };
